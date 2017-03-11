@@ -1,7 +1,9 @@
 'use strict';
 
+(function () {
+
 angular
-  .module('newAngularApp', [
+  .module('inOurWorldApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -33,3 +35,6 @@ angular
   .config(function ($locationProvider) {
     $locationProvider.hashPrefix('');
   });
+
+})();
+

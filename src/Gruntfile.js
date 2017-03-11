@@ -1,7 +1,7 @@
 'use strict';
 
 // # Globbing
-// for performance reasons we're only matching one level down:
+// for performance reasons sometimes matching only one level down:
 // 'test/spec/{,*/}*.js'
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
@@ -21,14 +21,14 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: './server/dist'
   };
 
   // Define the configuration for all the tasks
   grunt.initConfig({
 
     // Project settings
-    yeoman: appConfig,
+    inourworld: appConfig,
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/**/*.js'],
+        files: ['<%= inourworld.app %>/scripts/**/*.js'],
         tasks: ['newer:jshint:all', 'newer:jscs:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -48,7 +48,7 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
       },
       compass: {
-        files: ['<%= yeoman.app %>/styles/**/*.{scss,sass}'],
+        files: ['<%= inourworld.app %>/styles/**/*.{scss,sass}'],
         tasks: ['compass:server', 'postcss:server']
       },
       gruntfile: {
@@ -59,9 +59,9 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/**/*.html',
+          '<%= inourworld.app %>/**/*.html',
           '.tmp/styles/**/*.css',
-          '<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= inourworld.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -112,7 +112,7 @@ module.exports = function (grunt) {
       dist: {
         options: {
           open: true,
-          base: '<%= yeoman.dist %>'
+          base: '<%= inourworld.dist %>'
         }
       }
     },
@@ -126,7 +126,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/**/*.js'
+          '<%= inourworld.app %>/scripts/**/*.js'
         ]
       },
       test: {
@@ -146,7 +146,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/**/*.js'
+          '<%= inourworld.app %>/scripts/**/*.js'
         ]
       },
       test: {
@@ -161,8 +161,8 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '.tmp',
-            '<%= yeoman.dist %>/{,*/}*',
-            '!<%= yeoman.dist %>/.git{,*/}*'
+            '<%= inourworld.dist %>/{,*/}*',
+            '!<%= inourworld.dist %>/.git{,*/}*'
           ]
         }]
       },
@@ -200,7 +200,7 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     wiredep: {
       app: {
-        src: ['<%= yeoman.app %>/index.html'],
+        src: ['<%= inourworld.app %>/index.html'],
         ignorePath:  /\.\.\//
       },
       test: {
@@ -220,7 +220,7 @@ module.exports = function (grunt) {
           }
       },
       sass: {
-        src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        src: ['<%= inourworld.app %>/styles/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     }, 
@@ -228,12 +228,12 @@ module.exports = function (grunt) {
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
       options: {
-        sassDir: '<%= yeoman.app %>/styles',
+        sassDir: '<%= inourworld.app %>/styles',
         cssDir: '.tmp/styles',
         generatedImagesDir: '.tmp/images/generated',
-        imagesDir: '<%= yeoman.app %>/images',
-        javascriptsDir: '<%= yeoman.app %>/scripts',
-        fontsDir: '<%= yeoman.app %>/styles/fonts',
+        imagesDir: '<%= inourworld.app %>/images',
+        javascriptsDir: '<%= inourworld.app %>/scripts',
+        fontsDir: '<%= inourworld.app %>/styles/fonts',
         importPath: './bower_components',
         httpImagesPath: '/images',
         httpGeneratedImagesPath: '/images/generated',
@@ -244,7 +244,7 @@ module.exports = function (grunt) {
       },
       dist: {
         options: {
-          generatedImagesDir: '<%= yeoman.dist %>/images/generated'
+          generatedImagesDir: '<%= inourworld.dist %>/images/generated'
         }
       },
       server: {
@@ -258,10 +258,10 @@ module.exports = function (grunt) {
     filerev: {
       dist: {
         src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
-          '<%= yeoman.dist %>/styles/{,*/}*.css',
-          // '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.dist %>/styles/fonts/**/*'
+          '<%= inourworld.dist %>/scripts/{,*/}*.js',
+          '<%= inourworld.dist %>/styles/{,*/}*.css',
+          // '<%= inourworld.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= inourworld.dist %>/styles/fonts/**/*'
         ]
       }
     },
@@ -270,9 +270,9 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
+      html: '<%= inourworld.app %>/index.html',
       options: {
-        dest: '<%= yeoman.dist %>',
+        dest: '<%= inourworld.dist %>',
         flow: {
           html: {
             steps: {
@@ -287,14 +287,14 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/**/*.html'],
-      css: ['<%= yeoman.dist %>/styles/**/*.css'],
-      js: ['<%= yeoman.dist %>/scripts/**/*.js'],
+      html: ['<%= inourworld.dist %>/**/*.html'],
+      css: ['<%= inourworld.dist %>/styles/**/*.css'],
+      js: ['<%= inourworld.dist %>/scripts/**/*.js'],
       options: {
         assetsDirs: [
-          '<%= yeoman.dist %>',
-          '<%= yeoman.dist %>/images',
-          '<%= yeoman.dist %>/styles'
+          '<%= inourworld.dist %>',
+          '<%= inourworld.dist %>/images',
+          '<%= inourworld.dist %>/styles'
         ],
         patterns: {
           js: [[/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images']]
@@ -309,7 +309,7 @@ module.exports = function (grunt) {
     // cssmin: {
     //   dist: {
     //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
+    //       '<%= inourworld.dist %>/styles/main.css': [
     //         '.tmp/styles/{,*/}*.css'
     //       ]
     //     }
@@ -318,8 +318,8 @@ module.exports = function (grunt) {
     // uglify: {
     //   dist: {
     //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
+    //       '<%= inourworld.dist %>/scripts/scripts.js': [
+    //         '<%= inourworld.dist %>/scripts/scripts.js'
     //       ]
     //     }
     //   }
@@ -332,9 +332,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/images',
+          cwd: '<%= inourworld.app %>/images',
           src: '**/*.{png,jpg,jpeg,gif}',
-          dest: '<%= yeoman.dist %>/images'
+          dest: '<%= inourworld.dist %>/images'
         }]
       }
     },
@@ -343,9 +343,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/images',
+          cwd: '<%= inourworld.app %>/images',
           src: '**/*.svg',
-          dest: '<%= yeoman.dist %>/images'
+          dest: '<%= inourworld.dist %>/images'
         }]
       }
     },
@@ -360,9 +360,9 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= yeoman.dist %>',
+          cwd: '<%= inourworld.dist %>',
           src: ['**/*.html'],
-          dest: '<%= yeoman.dist %>'
+          dest: '<%= inourworld.dist %>'
         }]
       }
     },
@@ -370,11 +370,11 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'newAngularApp',
+          module: 'inOurWorldApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
-        cwd: '<%= yeoman.app %>',
+        cwd: '<%= inourworld.app %>',
         src: 'views/**/*.html',
         dest: '.tmp/templateCache.js'
       }
@@ -396,7 +396,7 @@ module.exports = function (grunt) {
     // Replace Google CDN references
     cdnify: {
       dist: {
-        html: ['<%= yeoman.dist %>/*.html']
+        html: ['<%= inourworld.dist %>/*.html']
       }
     },
 
@@ -406,8 +406,8 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: '<%= yeoman.app %>',
-          dest: '<%= yeoman.dist %>',
+          cwd: '<%= inourworld.app %>',
+          dest: '<%= inourworld.dist %>',
           src: [
             '*.{ico,png,txt}',
             '*.html',
@@ -417,18 +417,18 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           cwd: '.tmp/images',
-          dest: '<%= yeoman.dist %>/images',
+          dest: '<%= inourworld.dist %>/images',
           src: ['generated/*']
         }, {
           expand: true,
           cwd: '.',
           src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-          dest: '<%= yeoman.dist %>'
+          dest: '<%= inourworld.dist %>'
         }]
       },
       styles: {
         expand: true,
-        cwd: '<%= yeoman.app %>/styles',
+        cwd: '<%= inourworld.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
       }

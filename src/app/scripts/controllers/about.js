@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('newAngularApp')
+(function () {
+
+angular.module('inOurWorldApp')
   .controller('AboutCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
@@ -8,3 +10,6 @@ angular.module('newAngularApp')
       'Karma'
     ];
   });
+
+})();
+

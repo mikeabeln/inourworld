@@ -1,8 +1,8 @@
-# bare-angular
+# In Our World Source
 
 ## Build & development
 
-Run `grunt` for building and `grunt serve` for preview.
+Run `grunt` for building and `grunt serve` for development preview.
 
 ## Testing
 
