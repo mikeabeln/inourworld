@@ -32,9 +32,9 @@ angular
 
   })
 
-  .config(function ($locationProvider) {
+  .config(['$locationProvider', function ($locationProvider) {
     $locationProvider.hashPrefix('');
-  });
+  }]);
 
 })();
 

@@ -261,7 +261,7 @@ module.exports = function (grunt) {
           '<%= inourworld.dist %>/scripts/{,*/}*.js',
           '<%= inourworld.dist %>/styles/{,*/}*.css',
           // '<%= inourworld.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= inourworld.dist %>/styles/fonts/**/*'
+          '<%= inourworld.dist %>/styles/fonts/*'
         ]
       }
     },
@@ -287,9 +287,9 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
-      html: ['<%= inourworld.dist %>/**/*.html'],
-      css: ['<%= inourworld.dist %>/styles/**/*.css'],
-      js: ['<%= inourworld.dist %>/scripts/**/*.js'],
+      html: ['<%= inourworld.dist %>/{,*/}*.html'],
+      css: ['<%= inourworld.dist %>/styles/{,*/}*.css'],
+      js: ['<%= inourworld.dist %>/scripts/{,*/}*.js'],
       options: {
         assetsDirs: [
           '<%= inourworld.dist %>',
@@ -412,18 +412,13 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '*.html',
             'images/**/*',
-            'styles/fonts/**/*'
+            'styles/fonts/{,*/}*.*'
           ]
         }, {
           expand: true,
           cwd: '.tmp/images',
           dest: '<%= inourworld.dist %>/images',
           src: ['generated/*']
-        }, {
-          expand: true,
-          cwd: '.',
-          src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-          dest: '<%= inourworld.dist %>'
         }]
       },
       styles: {

@@ -1,0 +1,11 @@
+@mixin auto-marg($auto){
+	margin-left: $auto;
+	margin-right: $auto;
+}
+
+@mixin upper($mod){
+	    text-transform: $mod;
+-webkit-text-transform: $mod;
+   -moz-text-transform: $mod;
+    -ms-text-transform: $mod;
+}

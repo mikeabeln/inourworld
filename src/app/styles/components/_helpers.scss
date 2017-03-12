@@ -1,0 +1,61 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.full-bleed{
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.auto-marg{
+  @include auto-marg(auto);
+}
+
+.clearfix:after {
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.filler{
+  height: 500px;
+  display: block;
+  background-color: #698585;
+}
+
+
+
+
+
+
+
+
+
+/*    *************************
+            MEDIA QUERIES
+      *************************
+*/
+
+
+
+@media screen and (min-width: 544px) and (max-width: 767px) {
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+@media screen and (min-width: 1200px) {
+
+}
