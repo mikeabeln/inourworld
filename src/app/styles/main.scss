@@ -1,40 +1,25 @@
-// $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
-@import 'bootstrap-sass-official/assets/stylesheets/_bootstrap.scss';
 @import 'font-awesome/scss/font-awesome.scss';
 // endbower
-// @import './bs/_bootstrap-grid.scss';
-@import "material-components-web/material-components-web";
+@import './bs/_bootstrap-grid.scss';
+@import "./material-components-web/material-components-web";
 
 
 
-//CUSTOM
 // @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
-
 @import './components/_mixins.scss';
-
 @import './components/_helpers.scss';
 @import './components/_nav-styles.scss';
 @import './components/_main-styles.scss';
 
 
 body {
-  padding: 0;
-  font-family: 'Roboto';
+  padding: 0px;
+  margin: 0px;
 }
 
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
 
-.hidden-nav-btn{
-	display: block;
-	margin-top: 8px;
-}
 
 
 

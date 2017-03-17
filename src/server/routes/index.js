@@ -1,26 +1,28 @@
+'use strict';
+
 var      fs = require('fs'),
     express = require('express'),
  bodyParser = require('body-parser'),
      multer = require('multer'),
 
-    navData = require('../json/navData.json'),
-  themeData = require('../json/themeData.json'),
-         cv = require('../json/cv/cv.json'),
-  stateData = require('../json/stateData.json'),
+  //   navData = require('../json/navData.json'),
+  // themeData = require('../json/themeData.json'),
+  //        cv = require('../json/cv/cv.json'),
+  // stateData = require('../json/stateData.json'),
 
      // upload = multer(),
      router = express.Router(); 
 
 
 
-AWS = require('aws-sdk');
+var AWS = require('aws-sdk');
 AWS.config.loadFromPath('./config.json');
 var bucket = {Bucket: 'mikeontheweb-content'};
 var s3 = new AWS.S3( { params: bucket} );
 
 
 
-app = require('../app');
+var app = require('../app');
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true })); 
 
