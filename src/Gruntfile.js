@@ -234,7 +234,7 @@ module.exports = function (grunt) {
         imagesDir: '<%= inourworld.app %>/images',
         javascriptsDir: '<%= inourworld.app %>/scripts',
         fontsDir: '<%= inourworld.app %>/styles/fonts',
-        importPath: './bower_components',
+        importPath: ['./bower_components', './node_modules'],
         httpImagesPath: '/images',
         httpGeneratedImagesPath: '/images/generated',
         httpFontsPath: '/styles/fonts',

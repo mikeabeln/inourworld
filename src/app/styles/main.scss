@@ -3,11 +3,13 @@
 @import 'bootstrap-sass-official/assets/stylesheets/_bootstrap.scss';
 @import 'font-awesome/scss/font-awesome.scss';
 // endbower
-@import './bs/_bootstrap-grid.scss';
+// @import './bs/_bootstrap-grid.scss';
+@import "material-components-web/material-components-web";
+
 
 
 //CUSTOM
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
+// @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
 
 @import './components/_mixins.scss';
 

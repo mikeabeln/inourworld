@@ -13,7 +13,6 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -31,7 +30,6 @@ angular
       });
 
   })
-
   .config(['$locationProvider', function ($locationProvider) {
     $locationProvider.hashPrefix('');
   }]);
