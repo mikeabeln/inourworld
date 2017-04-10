@@ -1,7 +1,12 @@
+$fa-font-path: "./fonts";
 // bower:scss
 @import 'font-awesome/scss/font-awesome.scss';
 // endbower
 @import './bs/_bootstrap-grid.scss';
+
+$mdc-theme-primary: #181818 !default; /* Indigo 500 */
+$mdc-theme-accent: #666666 !default; /* Pink A200 */
+$mdc-theme-background: #fff !default; /* White */
 @import "./material-components-web/material-components-web";
 
 
@@ -11,11 +16,93 @@
 @import './components/_helpers.scss';
 @import './components/_nav-styles.scss';
 @import './components/_main-styles.scss';
+@import './components/_dashboard-styles.scss';
 
 
 body {
   padding: 0px;
   margin: 0px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+button, a, i {
+	&:focus {
+		outline:0;
+	}
+}
+
+input {
+	font-family: Roboto Mono, sans-serif;
+	font-weight: 400;
+}
+
+label {
+	margin-bottom: 4px;
+}
+
+
+.mdc-simple-menu .mdc-list-item{
+	padding: 0px;
+}
+
+.iow-list-item{
+	margin-left: 24px;
+	margin-right: 24px;
+}
+
+.mdc-permanent-drawer {
+	width: inherit !important;
+	min-width: 300px;
+}
+
+.mdc-card {
+	transition: .3s ease-in-out;
+	border-radius: 4px 4px 4px 4px;
+	overflow: hidden;
+	// margin-top: 12px;
+    margin-left: 12px;
+    margin-right: 12px;
+
+ 	&:hover{
+ 		@include mdc-elevation(6);
+ 	}
+}
+
+.card-tile{
+	margin-bottom: 24px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.mdc-car__media {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.mdc-layout-grid {
+	// padding: 0px;
+}
+
+
+/* A simple menu button. */
+.demo-menu {
+	@include mdc-elevation(6);
+	position: fixed;
+	z-index: +2;
+  	background: #383838;
+ 	margin: 16px;
+  	color: #FFF;
+  	box-sizing: border-box;
+  	// transition: .3s ease-in-out;
+
+  	&:hover {
+  		// transform: rotate(180deg);
+  		@include mdc-elevation(10);
+  	}
 }
 
 

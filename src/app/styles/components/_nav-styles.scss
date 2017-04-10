@@ -5,12 +5,66 @@
   z-index: 999;
 }
 
-.brand-img{
-  display: inline-block;
-  height: 20px;
-  margin-top: 17px;
+@mixin keyframes( $animationName )
+{
+    @-webkit-keyframes $animationName {
+        @content;
+    }
+    @-moz-keyframes $animationName {
+        @content;
+    }
+    @-o-keyframes $animationName {
+        @content;
+    }
+    @keyframes $animationName {
+        @content;
+    }
 }
 
+@mixin animation($animate) {
+  animation: $animate;
+};
+
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg);
+  } 100% {
+    transform: rotate(359deg);
+  }
+}
+
+.brand-img{
+
+    display: inline-block;
+    // height: 32px;
+    height: calc(70% - 5px);
+    animation: rotating 30s linear infinite;
+    // margin-top: 2px;
+    transition: transform .4s ease-in-out;
+    &:hover {
+      // @include animation('rotating 4s infinite');
+    }
+}
+
+// .brand-img:hover{
+    // display: inline-block;
+    // animation: 2s linear infinite;
+    // height: 32px;
+    // margin-top: 2px;
+    // transform: rotate(180deg);
+// }
+
+
+.more-menu{
+  color: $mdc-theme-accent;
+  &:hover {
+    color: $mdc-theme-background;
+  }
+}
+
+.nav-link{
+  
+}
 
 
 

@@ -18,6 +18,8 @@ module.exports = function (grunt) {
     cdnify: 'grunt-google-cdn'
   });
 
+  require('load-grunt-tasks')(grunt);
+
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
@@ -29,6 +31,21 @@ module.exports = function (grunt) {
 
     // Project settings
     inourworld: appConfig,
+
+    babel: {
+      options: {
+        sourceMap: true
+      },
+      dist: {
+        files: [{
+            expand: true,
+            cwd: '<%= inourworld.app %>/scripts',
+            src: ['components/mdc.js'],
+            dest: '<%= inourworld.app %>/scripts/babel',
+            ext: '.js'
+        }]
+      }
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -126,7 +143,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= inourworld.app %>/scripts/**/*.js'
+          '<%= inourworld.app %>/scripts/**/*.js', '!<%= inourworld.app %>/scripts/babel/**/*.js'
         ]
       },
       test: {
@@ -146,7 +163,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= inourworld.app %>/scripts/**/*.js'
+          '<%= inourworld.app %>/scripts/**/*.js', '!<%= inourworld.app %>/scripts/components/mdc.js', '!<%= inourworld.app %>/scripts/babel/**/*.js'
         ]
       },
       test: {
@@ -162,6 +179,7 @@ module.exports = function (grunt) {
           src: [
             '.tmp',
             '<%= inourworld.dist %>/{,*/}*',
+            '<%= inourworld.app %>/scripts/babel/{,*/}*',
             '!<%= inourworld.dist %>/.git{,*/}*'
           ]
         }]
@@ -412,6 +430,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '*.html',
             'images/**/*',
+            'views/**/*.html',
             'styles/fonts/{,*/}*.*'
           ]
         }, {
@@ -460,6 +479,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
+      'babel',
       'clean:server',
       'wiredep',
       'concurrent:server',
@@ -485,6 +505,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'babel',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -505,7 +526,6 @@ module.exports = function (grunt) {
     'newer:jshint',
     'newer:jscs',
     // 'test',
-    'build',
-    'connect:dist:keepalive'
+    'build'
   ]);
 };

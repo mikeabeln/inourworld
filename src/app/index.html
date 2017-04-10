@@ -2,27 +2,75 @@
 <html class="mdc-typography">
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <title>In Our World</title>
+    <meta name="fragment" content="!"/>   
+    <meta name="description" content="Creatives connected locally, grown digitally,=.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Michael Abeln">
+    <meta name="keywords" content="">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
+    <!-- build:css(.) /styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- build:css(.tmp) /styles/main.css -->
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
     <!-- endbuild -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body ng-app="inOurWorldApp">
+
+  <div ng-controller="NavCtrl as nav">
+          <button class="demo-menu mdc-fab material-icons mdc-ripple-accent" aria-label="Menu" data-mdc-auto-init="MDCRipple">
+              <img class="brand-img" src="/images/iow.svg">
+          </button>
+
+      <aside mdc-temporary-drawer>
+        <nav class="mdc-temporary-drawer__drawer iow-drawer">
+          <header class="mdc-temporary-drawer__header">
+            <div class="mdc-temporary-drawer__header-content mdc-theme--primary-bg mdc-theme--text-primary-on-primary">
+              <i class="fa fa-user-circle" aria-hidden="true"></i> <span class="iow-user-name">Michael Abeln</span>
+            </div>
+          </header>
+          <nav class="mdc-temporary-drawer__content mdc-list-group">
+            <div id="icon-with-text-demo" class="mdc-list">
+              <a class="mdc-list-item mdc-temporary-drawer--selected" ng-href="#!/a">
+                <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">inbox</i>Inbox
+              </a>
+              <a class="mdc-list-item" ng-href="#!/about">
+                <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">star</i>Star
+              </a>
+              <a class="mdc-list-item" ng-href="#!/">
+                <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">send</i>Sent Mail
+              </a>
+              <a class="mdc-list-item" ng-href="#!/a">
+                <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">drafts</i>Drafts
+              </a>
+            </div>
+
+            <hr class="mdc-list-divider">
+
+            <div class="mdc-list">
+              <a class="mdc-list-item" ng-href="#!/a">
+                <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>All Mail
+              </a>
+              <a class="mdc-list-item" ng-href="#!/about">
+                <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Trash
+              </a>
+              <a class="mdc-list-item" ng-href="#!/">
+                <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Spam
+              </a>
+            </div>
+          </nav>
+        </nav>
+      </aside>
+    </div>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="container-fluid full-bleed">
-    <div ng-view="" class="col-xs-12 full-bleed"></div>
-    </div>
+    <div ng-view="" class="viewport full-bleed container-fluid col-xs-12"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -35,7 +83,7 @@
        ga('send', 'pageview');
     </script>
 
-    <!-- build:js(.) scripts/vendor.js -->
+    <!-- build:js(.) /scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -47,17 +95,35 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/jquery-bridget/jquery-bridget.js"></script>
+    <script src="bower_components/get-size/get-size.js"></script>
+    <script src="bower_components/ev-emitter/ev-emitter.js"></script>
+    <script src="bower_components/desandro-matches-selector/matches-selector.js"></script>
+    <script src="bower_components/fizzy-ui-utils/utils.js"></script>
+    <script src="bower_components/outlayer/item.js"></script>
+    <script src="bower_components/outlayer/outlayer.js"></script>
+    <script src="bower_components/masonry/masonry.js"></script>
+    <script src="bower_components/imagesloaded/imagesloaded.js"></script>
+    <script src="bower_components/angular-images-loaded/angular-images-loaded.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/lib/material-components-web/material-components-web.js"></script>
+    <!-- build:js({.tmp,app}) /scripts/scripts.js -->
+    <script src="scripts/lib/material-components-web/material-components-web.js"></script>
+    <script src="scripts/lib/angular-masonry-directive/src/angular-masonry-directive.js"></script>
 
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/app.js"></script>
 
-        <script src="scripts/directives/mdcRipple.js"></script>
-        <!-- endbuild -->
+    <script src="scripts/directives/mdcRipple.js"></script>
+    <script src="scripts/directives/mdcTemporaryDrawer.js"></script>
+    <script src="scripts/directives/mdcSimpleMenu.js"></script>
+
+    <script src="scripts/controllers/nav.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/dashboard.js"></script>
+
+    <!-- endbuild -->
 </body>
 </html>
