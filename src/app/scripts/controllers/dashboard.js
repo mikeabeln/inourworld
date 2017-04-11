@@ -2,13 +2,21 @@
 
 (function () {
 
-angular.module('inOurWorldApp').controller('DashboardCtrl', ['$scope', 'user',
-  	function ($scope, user) {
+angular.module('inOurWorldApp').controller('DashboardCtrl', ['$scope', 'user', '$http', '$routeParams',
+  	function ($scope, user, $http, $routeParams) {
 
   		$('.viewport').css('height', $(window).height());
 
       $scope.user = user;
       console.log(user);
+
+      $http.get('/dash/' + $routeParams.dashId).then(function success(dashboard) {
+        // body...
+        $scope.dashboard = dashboard;
+      }, function error(err) {
+        console.log(err);
+      });
+
 
 
       $scope.cards = [{

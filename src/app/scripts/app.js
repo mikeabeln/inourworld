@@ -39,6 +39,24 @@ angular
           }
         }
       })
+      .when('/dash/:dashId', {
+        templateUrl:'views/dashboard.html',
+        controller: 'DashboardCtrl',
+        controllerAs: 'dashboard',
+        resolve: {
+          user: function ($q, $http, $location, $routeParams) {
+            var deferred = $q.defer();
+            console.log($routeParams.dashId);
+            $http.get('/dash/' + $routeParams.dashId).then(function success(user) {
+              deferred.resolve(user);
+            }, function error(err) {
+              console.log(err);
+              $location.path('/');
+              deferred.reject(err);
+            }); return deferred.promise;
+          }
+        }
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',

@@ -59,5 +59,13 @@ module.exports = function(passport) {
 
 	 });
 
+	router.get('/dash/:dashId', isAuthenticated, function (req, res) {
+		console.log(req.params.dashId);
+	      res.json({
+	      	user: req.user
+	      });
+
+	 });
+
 	return router;
 };
